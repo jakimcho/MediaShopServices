@@ -1,0 +1,21 @@
+{
+  "name": "express-with-mongo",
+  "version": "1.0.0",
+  "description": "Just e test project with Mongo and Express.js",
+  "main": "app.js",
+  "repository": {
+    "type" : "git",
+    "url" : "git@github.com:jakimcho/ExpressWithMongo.git"
+  },
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Yakim Rachev",
+  "license": "ISC",
+  "dependencies": {
+    "configure": "0.0.1",
+    "express": "^4.16.3",
+    "joy": "^0.1.1",
+    "mongoose": "^5.2.17"
+  }
+}
