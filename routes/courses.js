@@ -1,15 +1,28 @@
 const express = require('express');
+const Course = require( '../models/course' );
 
 const coursesRouter = express.Router( );
 
-coursesRouter.get( '/', ( req, res ) => 
+
+coursesRouter.get( '/', async ( req, res ) => 
 {
-    res.send("Hello Courses");
+    const courses = await Course.find();
+    res.send( courses );
 });
 
-coursesRouter.post( '/', ( req, res ) => 
+coursesRouter.post( '/', async ( req, res ) => 
 {
-    res.send("Post course");
+    console.log("Post bofy: ", req.body);
+    let course = new Course(
+        {
+            name: req.body.name,
+            author: req.body.author,
+            isPublished: req.body.isPublished,
+            price: req.body.price
+        });
+
+    course = await course.save();
+    res.send( course );
 });
 
 coursesRouter.put( '/:id', ( req, res ) => 

@@ -1,5 +1,10 @@
 const express = require( 'express');
 const coursesRoutes = require( './routes/courses' );
+const mongoose = require( 'mongoose' );
+
+mongoose.connect( 'mongodb://localhost/test' )
+    .then( () => console.log( 'Connected to MongoDB' ) )
+    .catch( ( err ) => console.log( 'Something happend while connecting to db: ', err) );
 
 const app = express( );
 
