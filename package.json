@@ -4,11 +4,12 @@
   "description": "Just e test project with Mongo and Express.js",
   "main": "app.js",
   "repository": {
-    "type" : "git",
-    "url" : "git@github.com:jakimcho/ExpressWithMongo.git"
+    "type": "git",
+    "url": "git@github.com:jakimcho/ExpressWithMongo.git"
   },
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "start": "node app.js"
   },
   "author": "Yakim Rachev",
   "license": "ISC",
