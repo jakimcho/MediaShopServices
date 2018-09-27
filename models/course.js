@@ -1,35 +1,35 @@
-const mongoose = require( 'mongoose' );
+const mongoose = require('mongoose');
 
 const courseSchema = new mongoose.Schema(
     {
-        name: 
+        name:
         {
             type: String,
             minlength: 4,
             maxlength: 30,
             required: true
         },
-        author: 
+        author:
         {
             type: String,
             minlength: 4,
             maxlength: 30,
             required: true
         },
-        isPublished: 
-        { 
+        isPublished:
+        {
             type: Boolean,
             default: false
         },
-        price: 
+        price:
         {
             type: Number,
-            required: function() { return this.isPublished; }
+            required: function () { return this.isPublished; }
         }
 
     }
- );
- 
-const Course = mongoose.model( 'Couuses', courseSchema );
+);
+
+const Course = mongoose.model('Courses', courseSchema);
 
 module.exports = Course;
