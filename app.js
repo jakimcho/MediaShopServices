@@ -1,6 +1,7 @@
 const express = require( 'express');
 const coursesRoutes = require( './routes/courses' );
 const moviesRouter = require( './routes/movies' );
+const usersRouter = require( './routes/users' );
 const mongoose = require( 'mongoose' );
 
 mongoose.connect( 'mongodb://localhost/test', { useNewUrlParser: true} )
@@ -14,6 +15,7 @@ app.use( express.urlencoded( { extended: true } ) );
 
 app.use( '/api/courses', coursesRoutes );
 app.use( '/api/movies', moviesRouter );
+app.use( '/api/users', usersRouter );
 
 
 app.listen( 3000, 
