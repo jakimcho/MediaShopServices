@@ -15,9 +15,11 @@ authenticateionRouter.post( "/", async (req, res) =>
     if ( error ) return res.status( 400 ).send( error.details[0].message );
 
     const result = await bcrypt.compare( req.body.password, user.password );
+    const webTokken = user.generateToken();
+
     if ( result ) 
     {
-      res.send("You may pass!");
+      res.header( 'x-auth-token', webTokken ).send(webTokken);
     }else
     {
       res.send("You may NOT pass!");
