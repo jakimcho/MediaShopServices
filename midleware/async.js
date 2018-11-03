@@ -8,7 +8,8 @@ module.exports = function ( handler ){
     }
     catch( ex )
     {
-      next( ex );
+      console.log( `error: ${ex}` );
+      next( "Problem!!!!" );
     }
   }
 }

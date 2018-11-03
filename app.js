@@ -5,7 +5,12 @@ const moviesRouter = require( './routes/movies' );
 const usersRouter = require( './routes/users' );
 const authRouter = require( './routes/authenticate' );
 const genresRouter = require( './routes/genres' );
-const mongoose = require( 'mongoose' );
+const mongoose = require( 'mongoose' ); 
+
+process.on( 'uncaughtException', ( ex ) => 
+{
+  console.log('We Got an uncoought exception');
+});
 
 if ( !config.get( "jwtPrivateKey" ) )
 {
@@ -22,6 +27,7 @@ mongoose.connect( 'mongodb://localhost/test', {
 
 const app = express( );
 
+throw new Error("gdfgdfgdf");
 app.use( express.json() );
 app.use( express.urlencoded( { extended: true } ) );
 
