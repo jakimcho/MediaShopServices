@@ -1,5 +1,5 @@
 {
-  "name": "express-with-mongo",
+  "name": "media-shop-services",
   "version": "1.0.0",
   "description": "Just e test project with Mongo and Express.js",
   "main": "app.js",
