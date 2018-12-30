@@ -1,3 +1,12 @@
 {
+  "mongodb": {
+
+    "url": "",
+    "port": "",
+    "dbName": ""
+  },
+  "app": {
+    "port": ""
+  },
   "jwtPrivateKey": ""
 }

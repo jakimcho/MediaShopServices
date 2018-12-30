@@ -1,3 +1,4 @@
+const morgan = require('morgan');
 const cors = require('cors');
 const config = require( "config" );
 const express = require( 'express');
@@ -19,7 +20,12 @@ if ( !config.get( "jwtPrivateKey" ) )
     process.exit( 1 );
 }
 
-mongoose.connect( 'mongodb://localhost/test', { 
+const port = config.get("app.port");
+const mongodb_url = `${config.get( "mongodb.url" )}:${config.get("mongodb.port")}`;
+const mongodb = `${mongodb_url}/${config.get("mongodb.dbName")}"`;
+
+console.log("Connecting to mongo: ", mongodb);
+mongoose.connect( mongodb, { 
         useCreateIndex: true, 
         useNewUrlParser: true 
     })
@@ -27,6 +33,7 @@ mongoose.connect( 'mongodb://localhost/test', {
     .catch( ( err ) => console.log( 'Something happend while connecting to db: ', err) );
 
 const app = express( );
+app.get('env') === "development" && app.use(morgan("dev"));
 app.use( cors() );
 app.use( express.json() );
 app.use( express.urlencoded( { extended: true } ) );
@@ -36,5 +43,5 @@ app.use( '/api/users', usersRouter );
 app.use( '/api/genres', genresRouter );
 app.use( '/api/auth', authRouter );
 
-app.listen( 3001, 
-            () => console.log( " Listening on port 3001... " ) );
+app.listen( port, 
+            () => console.log( `Listening on port ${port}... ` ) );

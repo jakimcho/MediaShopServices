@@ -1,3 +1,4 @@
 {
-  "jwtPrivateKey": "jakim_jwtPrivateKey"
+  "jwtPrivateKey": "jakim_jwtPrivateKey",
+  "mongodb_url": "MONGO_URL"
 }
