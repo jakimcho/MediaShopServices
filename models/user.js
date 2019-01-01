@@ -79,13 +79,14 @@ const userScheme = new mongoose.Schema(
 
 userScheme.methods.generateToken = function()
 {
-	const user = _.pick(this, [ 'firstName', 
-								'sirName', 
-								'email', 
-								'city', 
-								'country', 
-								'address', 
-								'zip' ]);
+	const user = _.pick(this, [ "_id", 
+															"firstName", 
+															"sirName", 
+															"email", 
+															"city", 
+															"country", 
+															"address", 
+															"zip" ]);
 	const webTokken = jwt.sign( user, config.get( "jwtPrivateKey" ));
 	return webTokken;
 }
@@ -94,12 +95,11 @@ const User = mongoose.model( "User", userScheme );
 
 function validateUser( user )
 {
-	console.log("Validating user: ", user);
 	const schema = 
 	{
     email: Joi.string( )
                         .min( 5 )
-                        .max( 255 )
+                        .max( 50 )
                         .required()
                         .email( ),
                         
@@ -131,10 +131,11 @@ function validateUser( user )
                       .max( 5 )
                       .required( ),
 
-    address: Joi.string( )
+		address: Joi.string( )
+								.allow("")
+								.optional()
   }
-                        
-	return Joi.validate( user, schema );
+	return Joi.validate( user, schema );;
 }
 
 
