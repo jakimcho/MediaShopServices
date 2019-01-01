@@ -8,10 +8,12 @@ const moviesRouter = require( './routes/movies' );
 const genresRouter = require( './routes/genres' );
 const usersRouter = require( './routes/users' );
 const authRouter = require( './routes/authenticate' );
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger.json');
 
 process.on( 'uncaughtException', ( ex ) => 
 {
-  console.log('We Got an uncoought exception');
+  console.log('We Got an uncoought exception: ', ex.message);
 });
 
 if ( !config.get( "jwtPrivateKey" ) )
@@ -37,6 +39,7 @@ app.get('env') === "development" && app.use(morgan("dev"));
 app.use( cors() );
 app.use( express.json() );
 app.use( express.urlencoded( { extended: true } ) );
+app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use( '/api/courses', coursesRoutes );
 app.use( '/api/movies', moviesRouter );
 app.use( '/api/users', usersRouter );
