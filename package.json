@@ -10,6 +10,10 @@
   "directories": {
     "test": "tests"
   },
+  "jest": {
+    "collectCoverage": true,
+    "coverageReporters": ["lcov"]
+  },
   "scripts": {
     "test": "jest",
     "start": "node app.js"
@@ -30,6 +34,7 @@
     "swagger-ui-express": "^4.0.2"
   },
   "devDependencies": {
-    "jest": "^23.6.0"
+    "jest": "^23.6.0",
+    "jest-sonar-reporter": "^2.0.0"
   }
 }
