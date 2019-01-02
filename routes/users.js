@@ -5,22 +5,24 @@ const express = require( "express" );
 const bcrypt = require( "bcrypt" );
 const router = express.Router( );
 
-router.post( "/" , async ( req, res ) => 
-  {
-    console.log("Got request for registering user: ", req.body);
+router.post( "/" , async ( req, res ) => {
+    console.log("hello from post users");
     const { error } = validate( req.body );
-    if ( error ) 
-    {
+    if ( error ) {
+      const message = error.details[0]
+                            .message;
       return res.status( 400 )
-                .send( error.details[0]
-                            .message );
+                .send( {
+                  error: "Invalid user.", 
+                  reason: message 
+                });
     }
 
     let user = await User.findOne( {  email: req.body.email } );
     if ( user ) 
     { 
       return res.status( 400 )
-                .send( "Such user already exists." );
+                .send( {error: "Such user already exists."} );
     }
 
     user = new User( _.pick( req.body, [ 'firstName', 
@@ -49,11 +51,11 @@ router.post( "/" , async ( req, res ) =>
   }
 );
 
-router.get( "/", async ( req, res ) => 
-  {
+router.get( "/", async ( req, res ) => {
+    console.log("hello from get users");
     const users = await User.find();
     if (null === users || _.isEmpty(users)){
-      res.status(400).send("No users found");
+      res.status(400).send({error: "No users found"});
     }else{
       res.status(200).send(users);
     }

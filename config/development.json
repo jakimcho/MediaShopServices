@@ -1,8 +1,6 @@
 {
   "mongodb": {
-    "url": "mongodb://localhost",
-    "port": 27017,
-    "dbName": "test"
+    "dbURL": "mongodb://localhost/dev"
   },
   "app": {
     "port": 3001

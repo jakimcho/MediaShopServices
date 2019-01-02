@@ -12,7 +12,9 @@
   },
   "jest": {
     "collectCoverage": true,
-    "coverageReporters": ["lcov"]
+    "coverageReporters": [
+      "lcov"
+    ]
   },
   "scripts": {
     "test": "jest",
@@ -35,6 +37,7 @@
   },
   "devDependencies": {
     "jest": "^23.6.0",
-    "jest-sonar-reporter": "^2.0.0"
+    "jest-sonar-reporter": "^2.0.0",
+    "supertest": "^3.3.0"
   }
 }
