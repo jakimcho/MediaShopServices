@@ -6,10 +6,10 @@ module.exports = async function(){
   try {
     console.log("Connecting to mongo: ", mongoDBURL);
     const connectionProps = { useCreateIndex: true, useNewUrlParser: true };
-    await mongoose.connect( mongoDBURL, connectionProps);
+    const dbcon = await mongoose.connect( mongoDBURL, connectionProps);
     console.log( 'Connected to MongoDB' )
+    return dbcon;
   } catch (error) {
-    
     console.log( 'Something happend while connecting to db: ', err);
   }
 }

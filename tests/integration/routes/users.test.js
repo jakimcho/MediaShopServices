@@ -5,10 +5,10 @@ const users = require("./users.data");
 describe("api/users", () => {
   let server;
   
-  beforeEach(() => server = require("../../../app"));
+  beforeEach(() => server = require("../../../app")());
   afterEach(async () => {
-    server.close(); 
-    await User.remove({});
+    //server.close();
+    await User.deleteMany({});
   });
   
   describe("GET /", () => {

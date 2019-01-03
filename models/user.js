@@ -135,7 +135,7 @@ function validateUser( user )
 								.allow("")
 								.optional()
   }
-	return Joi.validate( user, schema );;
+	return Joi.validate( user, schema );
 }
 
 

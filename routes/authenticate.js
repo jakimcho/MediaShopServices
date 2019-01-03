@@ -9,20 +9,22 @@ const authenticateionRouter = express.Router();
 authenticateionRouter.post( "/", async (req, res) => 
   {
     let user = await User.findOne( {  email: req.body.email } );
-    if ( !user ) return res.status( 400 ).send( "No such username or password." );
+    console.log("user to login: ", req.body);
+    if ( !user ) return res.status( 400 ).send( { error : "No such username or password." } );
 
     const { error } = await validate( req.body );
-    if ( error ) return res.status( 400 ).send( error.details[0].message );
+    if ( error ) return res.status( 400 ).send( { error: error.details[0].message } );
 
     const result = await bcrypt.compare( req.body.password, user.password );
-    const webTokken = user.generateToken();
-
     if ( result ) 
     {
-      res.header( 'x-auth-token', webTokken ).send(webTokken);
+      const webTokken = user.generateToken();
+      res.header( 'x-auth-token', webTokken )
+          .status(200)
+          .send({token: webTokken});
     }else
     {
-      res.send("You may NOT pass!");
+      res.status(404).send({error: "You may NOT pass!"});
     }
   }
 );

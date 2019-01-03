@@ -13,11 +13,11 @@
   "jest": {
     "collectCoverage": true,
     "coverageReporters": [
-      "lcov"
+      "lcov", "html"
     ]
   },
   "scripts": {
-    "test": "jest",
+    "test": "jest --verbose --coverage --forceExit --runInBand",
     "start": "node app.js"
   },
   "author": "Yakim Rachev",
