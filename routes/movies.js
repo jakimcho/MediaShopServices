@@ -14,7 +14,7 @@ coursesRouter.post("/", async (req, res) => {
     const result = await createMovie(targetMovie);
     if (result === -1 )
     {
-        res.statusCode(404).send("No such movie");
+        res.status(404).send("No such movie");
     }else{
         res.send(result);
     }

@@ -13,7 +13,8 @@
   "jest": {
     "collectCoverage": true,
     "coverageReporters": [
-      "lcov", "html"
+      "lcov",
+      "html"
     ]
   },
   "scripts": {
@@ -36,7 +37,7 @@
     "swagger-ui-express": "^4.0.2"
   },
   "devDependencies": {
-    "jest": "^23.6.0",
+    "jest": "^24.8.0",
     "jest-sonar-reporter": "^2.0.0",
     "supertest": "^3.3.0"
   }

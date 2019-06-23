@@ -3,7 +3,7 @@
     "dbURL": "mongodb://localhost/dev"
   },
   "app": {
-    "port": 3001
+    "port": 3002
   },
   "jwtPrivateKey": "jakim"
 }
