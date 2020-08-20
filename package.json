@@ -24,7 +24,7 @@
   "author": "Yakim Rachev",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "3.0.2",
+    "bcrypt": "5.0.0",
     "config": "^3.0.1",
     "configure": "0.0.1",
     "cors": "^2.8.5",
